@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewpotr" content="width=divice-width, initial-scale=1">
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/styles/Styles.css">
+</head>
+<body>
+<header style="display: flex; justify-content: space-between;" >
+    <a href="/" title="Главная"><img height="60" alt="Logo" src="static/images/myLogo.png"></a>
+    <div style="align-items: center; display: flex;">
+        <a href="/" class="btn header_btn">Главная</a>
+        <a class="btn header_btn">О нас</a>
+        <a class="btn header_btn">Контакты</a>
+        <a class="btn header_btn" href="/page2.php">Войти</a>
+    </div>
+</header>
+{% block content %}
+{% endblock %}
+<footer>
+    <div align="center">
+            © <script>document.write(new Date().getFullYear())</script> IllinoisWebProject.inc |
+            <a target="_blank" href="https://vk.com/illinois99">Contact me to VK</a>
+    </div>
+</footer>
+</body>
+</html>
