@@ -15,11 +15,10 @@ footer {
     color: white;
 }
 
-footer a {
-    color: white !important;
+a{
     text-decoration: none;
 }
-footer a:hover {
+a:hover{
     text-decoration: underline;
 }
 
@@ -40,4 +39,62 @@ body {
     color: #3672b6;
     background-color: white;
     border-color: #3672b6;
+}
+
+.main_btn {
+    color: white;
+    background: #3672b6;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 33px;
+}
+
+.main_btn:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.main_btn:focus {
+    box-shadow: none !important;
+}
+
+.auth{
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0px;
+}
+
+.auth input {
+    font-size: 25px;
+    outline: none;
+    background: transparent;
+    border: none;
+    border-bottom-style: solid;
+    border-bottom-color: #3672b6;
+    color: #3672b6;
+    margin: 10px 0;
+}
+
+.auth input::placeholder {
+    color: #3672b6;
+}
+
+.container{
+    margin-bottom: 50px;
+    margin-top: 60px;
+}
+
+.description{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+.txtinput{
+    border-radius: 5px;
+    border-style: solid;
+    width: 100%;
+    margin-right: 10px;
+    font-size: 18px;
 }

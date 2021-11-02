@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>Авторизация</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/styles/Styles.css">
+    <script src="../static/scripts/auth.js"></script>
+</head>
+<body class="justify-content-center">
+<div class="container">
+    <div class="row">
+        <div align="center" class="col-12">
+            <a href="/" title="Главная"><img style="max-width: 300px" src="/static/images/myLogo_blue.png" width="100%"></a>
+            <H1 style="color: #3672b6;">Войти в систему</H1>
+            {% if notfound %}
+                <h3 style="color: #c11212;">Пользователь не найден!</h3>
+            {% endif %}
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form class="auth" onsubmit="return checkForm(this)" method="post" action="Login.php">
+                        <input name="email" placeholder="Email" required type="email" maxlength="50">
+                        <input name="pass" placeholder="Password" required type="password" maxlength="50">
+                        <button type="submit" class="btn main_btn" style="padding: 10px 0px; margin: 15px 0;">Войти</button>
+                    </form>
+                </div>
+            </div>
+            <div style="display: inline-flex">
+                <p style="color: #3672b6; font-weight: bold">Нет аккаунта? <a href="/SignUp.php">Зарегестрируйтесь</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
