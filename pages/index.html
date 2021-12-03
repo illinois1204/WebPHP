@@ -3,42 +3,36 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block content %}
-<div style="top: 50%; position: absolute; width: 100%;" align="center">
-        <h1>В разработке!</h1>
+<div class="row">
+    <div class="col-12 col-md-4">
+        <div style="display: flex; justify-content: space-between;">
+            <input class="txtinput" type="text">
+            <button class="btn main_btn" style="border-radius: 5px" >поиск</button>
+        </div>
+        <div style="display: grid">
+            {% for item in genre %}
+                <a style="font-size: 20px" href="#">{{item.name}}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-12 col-md-8">
+            <hr style="margin: 0">
+            {% for item in catalog %}
+            <a style="font-size: 28px;" href="#">{{item.name}}</a>
+            <div class="row">
+                    <div class="col-md-4">
+                            <img style="object-fit: cover" width="100%" src={{item.poster ?? "../static/images/noposter.jpg"}} alt="Poster" />
+                    </div>
+                    <div class="col-md-8">
+                            <p>Год: {{item.year}}</p>
+                            <p>Жанр: {{item.genre}}</p>
+                            <p>Режисер: {{item.director}}</p>
+                            <p>Цена: {{item.price}}₽</p>
+                            <p class="description">{{item.description}}</p>
+                    </div>
+            </div>
+            <hr style="margin: 1rem 0 0 0">
+            {% endfor %}
+    </div>
 </div>
-
-<!--<div class="container">-->
-<!--    <div class="row">-->
-<!--        <div class="col-12 col-md-4">-->
-<!--            <div style="display: flex; justify-content: space-between;">-->
-<!--                <input class="txtinput" type="text">-->
-<!--                <button class="btn main_btn" style="border-radius: 5px" >поиск</button>-->
-<!--            </div>-->
-<!--            <div style="display: grid">-->
-<!--                {% for item in genre %}-->
-<!--                    <a style="font-size: 20px" href="#">{{item.name}}</a>-->
-<!--                {% endfor %}-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="col-12 col-md-8">-->
-<!--                <hr style="margin: 0">-->
-<!--                {% for item in catalog %}-->
-<!--                <a style="font-size: 28px;" href="#">{{item.name}}</a>-->
-<!--                <div class="row">-->
-<!--                        <div class="col-md-4">-->
-<!--                                <img style="object-fit: cover" width="100%" src={{item.poster ?? "../static/images/noposter.jpg"}} alt="Poster" />-->
-<!--                        </div>-->
-<!--                        <div class="col-md-8">-->
-<!--                                <p>Год: {{item.year}}</p>-->
-<!--                                <p>Жанр: {{item.genre}}</p>-->
-<!--                                <p>Режисер: {{item.director}}</p>-->
-<!--                                <p>Цена: {{item.price}}₽</p>-->
-<!--                                <p class="description">{{item.description}}</p>-->
-<!--                        </div>-->
-<!--                </div>-->
-<!--                <hr style="margin: 1rem 0 0 0">-->
-<!--                {% endfor %}-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 {% endblock %}
