@@ -8,10 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = trim($_POST['pass']);
-    $SQLCONN = new mysqli('localhost','7271_kin','illinois99','7271_kin');
-    if ($SQLCONN->connect_error) {
-        die('Ошибка подключения (' . $SQLCONN->connect_errno . ') ' . $SQLCONN->connect_error);
-    }
+
+    include('ConnectDB.php');
     $user = $SQLCONN->query("select * from users where email = '$email' limit 1")->fetch_assoc();
     if($user){
         $pass = explode('@', $user['password']);

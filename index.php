@@ -3,11 +3,8 @@ require_once 'vendor/autoload.php';
 $loader = new \Twig\Loader\FilesystemLoader('pages');
 $twig = new \Twig\Environment($loader);
 $template = $twig->loadTemplate('index.html');
-$SQLCONN = new mysqli('localhost','7271_kin','illinois99','7271_kin');
-mysqli_set_charset($SQLCONN, "utf8");
-if ($SQLCONN->connect_error) {
-    die('Ошибка подключения (' . $SQLCONN->connect_errno . ') ' . $SQLCONN->connect_error);
-}
+
+include('ConnectDB.php');
 $catalog = [];
 $genre = [];
 $result_genr = $SQLCONN->query("select * from genre");
