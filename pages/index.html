@@ -6,16 +6,16 @@
 <div class="row">
     <div class="col-12 col-md-4">
         <div style="display: flex; justify-content: space-between;">
-            <input class="txtinput" type="text">
-            <button class="btn main_btn" style="border-radius: 5px" >поиск</button>
+            <input class="txtinput" type="text" id="FilmNameInput">
+            <button class="btn main_btn" style="border-radius: 5px" id="FindeByName">поиск</button>
         </div>
-        <div style="display: grid">
+        <div style="display: grid" id="GenreList">
             {% for item in genre %}
-                <a style="font-size: 20px" href="#">{{item.name}}</a>
+                <a style="font-size: 20px" href="#" >{{item.name}}</a>
             {% endfor %}
         </div>
     </div>
-    <div class="col-12 col-md-8">
+    <div class="col-12 col-md-8" id="FilmList">
             <hr style="margin: 0">
             {% for item in catalog %}
             <a style="font-size: 28px;" href="#">{{item.name}}</a>

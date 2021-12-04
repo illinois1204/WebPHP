@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/styles/Styles.css">
     <script src="../static/scripts/jquery-3.6.0.min.js"></script>
+    <script src="../static/scripts/FindByNameFiltr.js"></script>
+    <script src="../static/scripts/FindByGenreFiltr.js"></script>
     <script>
         $(document).ready(() => {
             if($(window).width() < 650){
@@ -37,6 +39,7 @@
             <a href="/" class="btn header_btn">Главная</a>
             <a class="btn header_btn">О нас</a>
             <a class="btn header_btn">Контакты</a>
+            <a class="btn header_btn" href="/Login.php" id="ggg">Войти</a>
         </div>
         <div class="dropdown">
             <a class="btn header_btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -44,11 +47,11 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <li><a class="dropdown-item" href="#">Главная</a></li>
-                <li><a class="dropdown-item" href="#">О нас</a></li>
+                <li><a class="dropdown-item" href="#">О сервисе</a></li>
                 <li><a class="dropdown-item" href="#">Контакты</a></li>
+                <li><a class="dropdown-item" href="/Login.php">Войти</a></li>
             </ul>
         </div>
-        <a class="btn header_btn" href="/Login.php">Войти</a>
     </div>
 </header>
 <div class="container">
