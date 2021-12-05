@@ -2,9 +2,14 @@
 require_once 'vendor/autoload.php';
 $loader = new \Twig\Loader\FilesystemLoader('pages');
 $twig = new \Twig\Environment($loader);
+
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    if(isset($_COOKIE['RequestSessionIWP']) and $_COOKIE['RequestSessionIWP'] != '') {
+        header("Location: /");
+    }
     echo $twig->render('Login.html', array());
 }
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = trim($_POST['pass']);
@@ -14,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($user){
         $pass = explode('@', $user['password']);
         if ($pass[1] == sha1($password.$pass[0])){
-//            echo "Welcome ".$user['username'];
+            setcookie('RequestSessionIWP', $user['username'], time()+3600, "/");
             header('Location: /');
         }
         else{

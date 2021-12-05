@@ -98,3 +98,10 @@ body {
     margin-right: 10px;
     font-size: 18px;
 }
+
+.genrelinks{
+    font-size: 20px;
+    border: solid;
+    text-align: center;
+    margin: 2px 0;
+}

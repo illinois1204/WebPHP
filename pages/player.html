@@ -1,24 +1,24 @@
 {% extends "BaseLayout.html" %}
 
-{% block title %}ыы{% endblock %}
+{% block title %}Watching{% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="col-12 col-lg-4">
-        <img width="100%" src="../static/images/myLogo_blue.png" />
+        <img width="100%" src={{item.poster ?? "../static/images/noposter.jpg"}} alt="Poster" />
     </div>
     <div class="col-12 col-lg-8">
-        <h1>Name</h1>
-        <p>year: 2020</p>
-        <p>director: mikle bay</p>
-        <p>genre: action</p>
+        <h1>{{film.name}}</h1>
+        <h4>year: {{film.year}}</h4>
+        <h4>director: {{film.director}}</h4>
+        <h4>genre: {{film.genre}}</h4>
     </div>
     <div class="col-12">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, cumque fuga iure quaerat repellat sequi similique temporibus? Beatae cum deserunt dolores ducimus expedita facilis fugit iste laudantium minus molestias nemo quasi, recusandae repudiandae sapiente tempore temporibus voluptas, voluptatem! Eligendi error hic in minima quasi suscipit tenetur veniam vero voluptas voluptatem.</p>
+        <p>{{film.description}}</p>
     </div>
     <div>
         <video controls="controls">
-            <source src="">
+            <source src={{film.file}}>
         </video>
     </div>
     <h3>Коментарии:</h3>

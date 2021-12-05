@@ -10,7 +10,7 @@ $(document).ready(function() {
                 document.getElementById('FilmList').innerHTML = `<hr style="margin: 0">`;
                 JSON.parse(response).map(item => {
                     const row = `
-                        <a style="font-size: 28px;" href="#">${item.name}</a>
+                        <a style="font-size: 28px;" href='/player.php?FilmID=${item.id}'>${item.name}</a>
                         <div class="row">
                                 <div class="col-md-4">
                                         <img style="object-fit: cover" width="100%" src=${item.poster ?? "static/images/noposter.jpg"} alt="Poster" />

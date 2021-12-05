@@ -15,5 +15,7 @@ $result_cat = $SQLCONN->query("select * from catalog");
 while($r=mysqli_fetch_object($result_cat)) {
     $catalog[]=$r;
 }
-echo $template->render(array('title' => 'Welcome!', 'catalog' => $catalog, 'genre' => $genre));
+
+$Session = (isset($_COOKIE['RequestSessionIWP']) and $_COOKIE['RequestSessionIWP'] != '');
+echo $template->render(array('catalog' => $catalog, 'genre' => $genre, 'session' => $Session));
 ?>
