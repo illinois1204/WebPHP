@@ -2,6 +2,14 @@
 
 {% block title %}Watching{% endblock %}
 
+{% block deskotnav %}
+    {% if session %}
+        <a class="btn header_btn" href="/logout.php">Выйти</a>
+    {% else %}
+        <a class="btn header_btn" href="/Login.php">Войти</a>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 <div class="row">
     <div class="col-12 col-lg-4">
