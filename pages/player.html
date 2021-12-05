@@ -31,10 +31,12 @@
     {% endif %}
     <h3>Коментарии:</h3>
     {% if session %}
-        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-            <input class="txtinput" type="text" id="CommentInput">
-            <button class="btn main_btn" style="border-radius: 5px" id="CommentSend">Отправить</button>
-        </div>
+        <form method="post" action="CommentAdd.php">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <input required class="txtinput" type="text" name="comment" id="CommentInput">
+                <button type="submit" class="btn main_btn" style="border-radius: 5px">Отправить</button>
+            </div>
+        </form>
     {% endif %}
 
     {% for item in comments %}
