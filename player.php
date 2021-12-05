@@ -1,8 +1,4 @@
 <?php
-if(!isset($_COOKIE['RequestSessionIWP'])) {
-    header("Location: /");
-}
-
 if(isset($_GET['FilmID'])){
     $filmid = $_GET['FilmID'];
     require_once 'vendor/autoload.php';
@@ -12,7 +8,13 @@ if(isset($_GET['FilmID'])){
     include('ConnectDB.php');
     $film = $SQLCONN->query("select * from catalog where id = '$filmid' limit 1")->fetch_assoc();
     if($film){
-        echo $twig->render('player.html', array('film' => $film));
+        $comments = [];
+        $result = $SQLCONN->query("select * from comments where filmid = $filmid ORDER BY date Desc");
+        while ($r = mysqli_fetch_object($result)){
+            $comments[]=$r;
+        }
+        $Session = (isset($_COOKIE['RequestSessionIWP']) and $_COOKIE['RequestSessionIWP'] != '');
+        echo $twig->render('player.html', array('film' => $film, 'comments' => $comments, 'session' => $Session));
     }
     else{
         echo "404 Not found";

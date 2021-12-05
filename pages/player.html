@@ -5,7 +5,7 @@
 {% block content %}
 <div class="row">
     <div class="col-12 col-lg-4">
-        <img width="100%" src={{item.poster ?? "../static/images/noposter.jpg"}} alt="Poster" />
+        <img width="100%" src={{film.poster ?? "../static/images/noposter.jpg"}} alt="Poster" />
     </div>
     <div class="col-12 col-lg-8">
         <h1>{{film.name}}</h1>
@@ -16,31 +16,33 @@
     <div class="col-12">
         <p>{{film.description}}</p>
     </div>
-    <div>
-        <video controls="controls">
-            <source src={{film.file}}>
-        </video>
-    </div>
+    {% if session %}
+        <div>
+            <video controls="controls">
+                <source src={{film.file}}>
+            </video>
+        </div>
+    {% else %}
+        <hr>
+        <div align="center" style="height: 380px">
+            <h1 style="position: relative; top: 42%">Для просмотра выполните <a href="../Login.php">авторизацию</a></h1>
+        </div>
+        <hr>
+    {% endif %}
     <h3>Коментарии:</h3>
-    <div>
-        <input type="text">
-        <button class="btn main_btn" style="border-radius: 5px" >Отправить</button>
-    </div>
-    <hr>
-    <div>
-        <p>username, date</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam, aliquid assumenda cumque deserunt distinctio dolor est harum in ipsum magnam nemo placeat porro quisquam recusandae rem sapiente velit voluptatibus!</p>
-    </div>
-    <hr>
-    <div>
-        <p>username, date</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam, aliquid assumenda cumque deserunt distinctio dolor est harum in ipsum magnam nemo placeat porro quisquam recusandae rem sapiente velit voluptatibus!</p>
-    </div>
-    <hr>
-    <div>
-        <p>username, date</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam, aliquid assumenda cumque deserunt distinctio dolor est harum in ipsum magnam nemo placeat porro quisquam recusandae rem sapiente velit voluptatibus!</p>
-    </div>
+    {% if session %}
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <input class="txtinput" type="text" id="CommentInput">
+            <button class="btn main_btn" style="border-radius: 5px" id="CommentSend">Отправить</button>
+        </div>
+    {% endif %}
 
+    {% for item in comments %}
+        <hr>
+        <div>
+            <p>{{item.user}}, {{item.date}}</p>
+            <p>{{item.comment}}</p>
+        </div>
+    {% endfor %}
 </div>
 {% endblock %}
