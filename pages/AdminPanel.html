@@ -20,19 +20,29 @@
 
 {% block content %}
 
-<form>
-    <input required class="txtinput" type="text" name="filmname" autocomplete="off">
-    <input required class="txtinput" type="number" min="0" name="year">
-    <input required class="txtinput" type="text" name="director">
-    <select required>
+<script>
+    function cc(form){
+        alert(form.elements[3].value);
+        alert(123456);
+        return false;
+        alert(98745);
+    }
+</script>
+
+<form style="display: grid" onsubmit="return cc(this)" method="post">
+    <input required class="txtinput" type="text" name="filmname" autocomplete="off" style="margin: 3px 0">
+    <input required class="txtinput" type="number" min="0" name="year" style="margin: 3px 0">
+    <input required class="txtinput" type="text" name="director" autocomplete="off" style="margin: 3px 0">
+    <select class="txtinput" style="margin: 3px 0" required name="filmgenre">
         <option disabled selected>--Жанр--</option>
-        <option>Пункт 1</option>
-        <option>Пункт 2</option>
+        {% for item in genres %}
+            <option>{{item.name}}</option>
+        {% endfor %}
     </select>
-    <textarea class="txtinput" rows="5" name="description"></textarea>
-    <input required class="txtinput" type="text" name="poster">
-    <input required class="txtinput" type="text" name="file">
-    <button type="submit" class="btn main_btn" style="border-radius: 5px">Добавить</button>
+    <textarea class="txtinput" rows="5" name="description" style="margin: 3px 0"></textarea>
+    <input required class="txtinput" type="text" name="poster" autocomplete="off" style="margin: 3px 0">
+    <input required class="txtinput" type="text" name="file" autocomplete="off" style="margin: 3px 0">
+    <button type="submit" class="btn main_btn" style="border-radius: 5px; margin: 3px 0">Добавить</button>
 </form>
 <hr>
 
