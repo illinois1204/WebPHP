@@ -1,0 +1,40 @@
+{% extends "BaseLayout.html" %}
+
+{% block title %}AdminPanel{% endblock %}
+
+{% block deskotnav %}
+{% if session %}
+<a class="btn header_btn" href="/logout.php">Выйти</a>
+{% else %}
+<a class="btn header_btn" href="/Login.php">Войти</a>
+{% endif %}
+{% endblock %}
+
+{% block mobilenav %}
+{% if session %}
+<li><a class="dropdown-item" href="/logout.php">Выйти</a></li>
+{% else %}
+<li><a class="dropdown-item" href="/Login.php">Войти</a></li>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<form>
+    <input required class="txtinput" type="text" name="filmname" autocomplete="off">
+    <input required class="txtinput" type="number" min="0" name="year">
+    <input required class="txtinput" type="text" name="director">
+    <select required>
+        <option disabled selected>--Жанр--</option>
+        <option>Пункт 1</option>
+        <option>Пункт 2</option>
+    </select>
+    <textarea class="txtinput" rows="5" name="description"></textarea>
+    <input required class="txtinput" type="text" name="poster">
+    <input required class="txtinput" type="text" name="file">
+    <button type="submit" class="btn main_btn" style="border-radius: 5px">Добавить</button>
+</form>
+<hr>
+
+
+{% endblock %}

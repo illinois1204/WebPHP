@@ -10,6 +10,14 @@
     {% endif %}
 {% endblock %}
 
+{% block mobilenav %}
+    {% if session %}
+        <li><a class="dropdown-item" href="/logout.php">Выйти</a></li>
+    {% else %}
+        <li><a class="dropdown-item" href="/Login.php">Войти</a></li>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 <div class="row">
     <div class="col-12 col-lg-4">
