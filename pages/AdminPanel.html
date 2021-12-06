@@ -22,26 +22,39 @@
 
 <script>
     function cc(form){
-        alert(form.elements[3].value);
-        alert(123456);
-        return false;
-        alert(98745);
+        for (let i = 0; i < 3; i++) {
+            if (form.elements[i].value.trim() == '') {
+                alert('Не заполнено одно из полей');
+                return false;
+            }
+        }
+        if(form.elements['filmgenre'].value == '--Жанр--') {
+            alert('Не указан жанр');
+            return false;
+        }
+        for (let i = 4; i < form.elements.length-1; i++) {
+            if (form.elements[i].value.trim() == '') {
+                alert('Не заполнено одно из полей');
+                return false;
+            }
+        }
     }
 </script>
 
-<form style="display: grid" onsubmit="return cc(this)" method="post">
-    <input required class="txtinput" type="text" name="filmname" autocomplete="off" style="margin: 3px 0">
-    <input required class="txtinput" type="number" min="0" name="year" style="margin: 3px 0">
-    <input required class="txtinput" type="text" name="director" autocomplete="off" style="margin: 3px 0">
+<h2>Добро пожаловать в админ панель!</h2>
+<form style="display: grid" onsubmit="return cc(this)" method="post" action="">
+    <input required placeholder="Название фильма" class="txtinput" type="text" name="filmname" autocomplete="off" style="margin: 3px 0">
+    <input required placeholder="" class="txtinput" type="number" min="0" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" name="year" style="margin: 3px 0">
+    <input required placeholder="" class="txtinput" type="text" name="director" autocomplete="off" style="margin: 3px 0">
     <select class="txtinput" style="margin: 3px 0" required name="filmgenre">
         <option disabled selected>--Жанр--</option>
         {% for item in genres %}
             <option>{{item.name}}</option>
         {% endfor %}
     </select>
-    <textarea class="txtinput" rows="5" name="description" style="margin: 3px 0"></textarea>
-    <input required class="txtinput" type="text" name="poster" autocomplete="off" style="margin: 3px 0">
-    <input required class="txtinput" type="text" name="file" autocomplete="off" style="margin: 3px 0">
+    <textarea required placeholder="" class="txtinput" rows="5" name="description" style="margin: 3px 0"></textarea>
+    <input required placeholder="" class="txtinput" type="text" name="poster" autocomplete="off" style="margin: 3px 0">
+    <input required placeholder="" class="txtinput" type="text" name="file" autocomplete="off" style="margin: 3px 0">
     <button type="submit" class="btn main_btn" style="border-radius: 5px; margin: 3px 0">Добавить</button>
 </form>
 <hr>

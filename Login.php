@@ -19,7 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($user){
         $pass = explode('@', $user['password']);
         if ($pass[1] == sha1($password.$pass[0])){
-            setcookie('RequestSessionIWP', $user['username'], time()+3600, "/");
+            $usercoockie = ['username' => $user['username'], 'access' => $user['is_admin']];
+            setcookie('RequestSessionIWP', json_encode($usercoockie), time()+3600*3, "/");
             header('Location: /');
         }
         else{
