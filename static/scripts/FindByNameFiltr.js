@@ -20,7 +20,6 @@ $(document).ready(() => {
                                             <p>Год: ${item.year}</p>
                                             <p>Жанр: ${item.genre}</p>
                                             <p>Режисер: ${item.director}</p>
-                                            <p>Цена: ${item.price}₽</p>
                                             <p class="description">${item.description}</p>
                                     </div>
                             </div>

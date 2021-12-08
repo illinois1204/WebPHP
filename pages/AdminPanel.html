@@ -19,45 +19,51 @@
 {% endblock %}
 
 {% block content %}
-
-<script>
-    function cc(form){
-        for (let i = 0; i < 3; i++) {
-            if (form.elements[i].value.trim() == '') {
-                alert('Не заполнено одно из полей');
-                return false;
-            }
-        }
-        if(form.elements['filmgenre'].value == '--Жанр--') {
-            alert('Не указан жанр');
-            return false;
-        }
-        for (let i = 4; i < form.elements.length-1; i++) {
-            if (form.elements[i].value.trim() == '') {
-                alert('Не заполнено одно из полей');
-                return false;
-            }
-        }
-    }
-</script>
-
+<script src="../static/scripts/FilmAddForm.js"></script>
 <h2>Добро пожаловать в админ панель!</h2>
-<form style="display: grid" onsubmit="return cc(this)" method="post" action="">
+<form style="display: grid" onsubmit="return validateform(this)" method="post" action="FilmAdd.php">
     <input required placeholder="Название фильма" class="txtinput" type="text" name="filmname" autocomplete="off" style="margin: 3px 0">
-    <input required placeholder="" class="txtinput" type="number" min="0" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" name="year" style="margin: 3px 0">
-    <input required placeholder="" class="txtinput" type="text" name="director" autocomplete="off" style="margin: 3px 0">
+    <input required placeholder="Год" class="txtinput" type="number" min="0" oninput="this.value = this.value.replace(/[^0-9.]/g, '');" name="year" style="margin: 3px 0">
+    <input required placeholder="Режисер" class="txtinput" type="text" name="director" autocomplete="off" style="margin: 3px 0">
     <select class="txtinput" style="margin: 3px 0" required name="filmgenre">
         <option disabled selected>--Жанр--</option>
         {% for item in genres %}
             <option>{{item.name}}</option>
         {% endfor %}
     </select>
-    <textarea required placeholder="" class="txtinput" rows="5" name="description" style="margin: 3px 0"></textarea>
-    <input required placeholder="" class="txtinput" type="text" name="poster" autocomplete="off" style="margin: 3px 0">
-    <input required placeholder="" class="txtinput" type="text" name="file" autocomplete="off" style="margin: 3px 0">
+    <textarea required placeholder="Описание" class="txtinput" rows="5" name="description" style="margin: 3px 0"></textarea>
+    <input required placeholder="Ссылка на постер" class="txtinput" type="text" name="poster" autocomplete="off" style="margin: 3px 0">
+    <input required placeholder="Ссылка на файл" class="txtinput" type="text" name="file" autocomplete="off" style="margin: 3px 0">
     <button type="submit" class="btn main_btn" style="border-radius: 5px; margin: 3px 0">Добавить</button>
 </form>
 <hr>
+
+<script>
+    $(document).ready(function (){
+        $('td a').click(function (){
+            const row = $(this).closest('tr');
+            console.log(row.find('td:first').text());
+        })
+    })
+</script>
+
+<table style="width: 100%; text-align: center">
+    <tr>
+        <th>id</th>
+        <th>Название</th>
+        <th>Год</th>
+        <th>Режисер</th>
+    </tr>
+    {% for item in catalog %}
+    <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.year}}</td>
+        <td>{{item.director}}</td>
+        <td><a href="#">Удалить</a></td>
+    </tr>
+    {% endfor %}
+</table>
 
 
 {% endblock %}
