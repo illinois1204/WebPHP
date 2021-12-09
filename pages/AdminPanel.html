@@ -38,15 +38,7 @@
 </form>
 <hr>
 
-<script>
-    $(document).ready(function (){
-        $('td a').click(function (){
-            const row = $(this).closest('tr');
-            console.log(row.find('td:first').text());
-        })
-    })
-</script>
-
+<script src="../static/scripts/FilmDelete.js"></script>
 <table style="width: 100%; text-align: center">
     <tr>
         <th>id</th>
@@ -64,6 +56,4 @@
     </tr>
     {% endfor %}
 </table>
-
-
 {% endblock %}
