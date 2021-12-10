@@ -22,6 +22,11 @@ $result_cat = $SQLCONN->query("select id, name, year, director from catalog orde
 while($r=mysqli_fetch_object($result_cat)) {
     $catalog[]=$r;
 }
+
+$Access = false;
 $Session = (isset($_COOKIE['RequestSessionIWP']) and $_COOKIE['RequestSessionIWP'] != '');
-echo $template->render(array('session' => $Session, 'genres' => $genre, 'catalog' => $catalog));
+if($Session){
+    $Access = (json_decode($_COOKIE['RequestSessionIWP'], true)['access'] == '1');
+}
+echo $template->render(array('session' => $Session, 'genres' => $genre, 'catalog' => $catalog, 'access' => $Access));
 ?>

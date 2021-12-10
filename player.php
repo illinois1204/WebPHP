@@ -13,8 +13,13 @@ if(isset($_GET['FilmID'])){
         while ($r = mysqli_fetch_object($result)){
             $comments[]=$r;
         }
+
+        $Access = false;
         $Session = (isset($_COOKIE['RequestSessionIWP']) and $_COOKIE['RequestSessionIWP'] != '');
-        echo $twig->render('player.html', array('film' => $film, 'comments' => $comments, 'session' => $Session));
+        if($Session){
+            $Access = (json_decode($_COOKIE['RequestSessionIWP'], true)['access'] == '1');
+        }
+        echo $twig->render('player.html', array('film' => $film, 'comments' => $comments, 'session' => $Session, 'access' => $Access));
     }
     else{
         echo "404 Not found";

@@ -8,8 +8,12 @@ $(document).ready(function (){
                 FilmID: row.find('td:first').text()
             },
             success: function(resposne) {
-                row.hide();
-                console.log(resposne)
+                if(!Boolean(resposne.value)){
+                    row.hide();
+                }
+                else {
+                    alert("Ошибка при выполнении запроса");
+                }
             }
         })
     })

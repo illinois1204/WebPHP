@@ -3,6 +3,9 @@
 {% block title %}AdminPanel{% endblock %}
 
 {% block deskotnav %}
+{% if access %}
+<a class="btn header_btn" href="/AdminPanel.php">Админ панель</a>
+{% endif %}
 {% if session %}
 <a class="btn header_btn" href="/logout.php">Выйти</a>
 {% else %}
@@ -11,6 +14,9 @@
 {% endblock %}
 
 {% block mobilenav %}
+{% if access %}
+<li><a class="dropdown-item" href="/AdminPanel.php">Админ панель</a></li>
+{% endif %}
 {% if session %}
 <li><a class="dropdown-item" href="/logout.php">Выйти</a></li>
 {% else %}
