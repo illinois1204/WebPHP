@@ -5,8 +5,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $director = $_POST['director'];
     $filmgenre = $_POST['filmgenre'];
     $description = $_POST['description'];
-    $poster = $_POST['poster'];
-    $file = $_POST['file'];
+    $poster = trim($_POST['poster']);
+    $file = trim($_POST['file']);
     $PreviousRequest = $_SERVER['HTTP_REFERER'];
 
     include('ConnectDB.php');
