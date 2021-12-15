@@ -27,13 +27,17 @@
 {% block content %}
 <div class="row">
     <div class="col-12 col-lg-4">
-        <img width="100%" src={{film.poster ?? "../static/images/noposter.jpg"}} alt="Poster" />
+        {% if item.poster == "" %}
+        <img style="object-fit: cover" width="100%" src="../static/images/noposter.jpg" alt="Poster" />
+        {% else %}
+        <img style="object-fit: cover" width="100%" src={{item.poster}} alt="Poster" />
+        {% endif %}
     </div>
     <div class="col-12 col-lg-8">
         <h1>{{film.name}}</h1>
-        <h4>year: {{film.year}}</h4>
-        <h4>director: {{film.director}}</h4>
-        <h4>genre: {{film.genre}}</h4>
+        <h4>Год: {{film.year}}</h4>
+        <h4>Режисер: {{film.director}}</h4>
+        <h4>Жанр: {{film.genre}}</h4>
     </div>
     <div class="col-12">
         <p>{{film.description}}</p>

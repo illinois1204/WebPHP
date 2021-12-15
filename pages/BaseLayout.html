@@ -37,8 +37,7 @@
     <div style="align-items: center; display: flex;">
         <div id="desktopmenu">
             <a href="/" class="btn header_btn">Главная</a>
-            <a class="btn header_btn">О нас</a>
-            <a class="btn header_btn">Контакты</a>
+            <a href="about.php" class="btn header_btn">О сервисе</a>
             {% block deskotnav %}
             {% endblock %}
         </div>
@@ -47,9 +46,8 @@
                 Меню
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Главная</a></li>
-                <li><a class="dropdown-item" href="#">О сервисе</a></li>
-                <li><a class="dropdown-item" href="#">Контакты</a></li>
+                <li><a class="dropdown-item" href="/">Главная</a></li>
+                <li><a class="dropdown-item" href="about.php">О сервисе</a></li>
                 {% block mobilenav %}
                 {% endblock %}
             </ul>

@@ -1,6 +1,6 @@
 <?php
 if(isset($_GET['FilmName'])) {
-    $value = $_GET['FilmName'];
+    $value = trim($_GET['FilmName'], " '");
     include('ConnectDB.php');
     $FiltredCatalog = [];
     $data = $SQLCONN->query("SELECT * FROM catalog WHERE name LIKE '%$value%'");
@@ -11,7 +11,7 @@ if(isset($_GET['FilmName'])) {
     echo json_encode($FiltredCatalog);
 }
 if(isset($_GET['FilmGenre'])) {
-    $value = $_GET['FilmGenre'];
+    $value = trim($_GET['FilmGenre'], " '");
     include('ConnectDB.php');
     $FiltredCatalog = [];
     $data = $SQLCONN->query("SELECT * FROM catalog WHERE genre ='$value'");

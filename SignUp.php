@@ -6,9 +6,9 @@ if($_SERVER["REQUEST_METHOD"]=="GET") {
     echo $twig->render('SignUp.html', array());
 }
 if($_SERVER["REQUEST_METHOD"]=="POST") {
-    $username = trim($_POST['username']);
-    $email = trim($_POST['email']);
-    $password = trim($_POST['pass']);
+    $username = trim($_POST['username'], " '");
+    $email = trim($_POST['email'], " '");
+    $password = trim($_POST['pass'], " '");
 
     include('ConnectDB.php');
     if(count($SQLCONN->query("select email from users where email = '$email' limit 1")->fetch_assoc()) == 1){

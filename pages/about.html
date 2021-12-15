@@ -1,0 +1,34 @@
+{% extends "BaseLayout.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block deskotnav %}
+{% if access %}
+<a class="btn header_btn" href="/AdminPanel.php">Админ панель</a>
+{% endif %}
+{% if session %}
+<a class="btn header_btn" href="/logout.php">Выйти</a>
+{% else %}
+<a class="btn header_btn" href="/Login.php">Войти</a>
+{% endif %}
+{% endblock %}
+
+{% block mobilenav %}
+{% if access %}
+<li><a class="dropdown-item" href="/AdminPanel.php">Админ панель</a></li>
+{% endif %}
+{% if session %}
+<li><a class="dropdown-item" href="/logout.php">Выйти</a></li>
+{% else %}
+<li><a class="dropdown-item" href="/Login.php">Войти</a></li>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+    <h2>Рады приветствовать вас на нашем сервисе</h2>
+    <h5>Мы предоставляем видеоконтент для чилла, чтобы развеять напряг в канун сдачи всех долгов семестра))0).
+        У нас есть подборка видеоконтента в качестве 720р без дополнительных подписок и покупок, необходима только авторизация
+        (на случай если хотите оставить комментарий или отзыв). Также можно чекнуть комментарии других пользователей,
+        чтобы понимать ожидания о фильме.</h5>
+    <h5>Сервис был разработан в течении одного семестра, но готов к функционалу на 100%. Приятного просмотра!</h5>
+{% endblock %}

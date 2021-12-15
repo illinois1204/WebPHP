@@ -1,6 +1,6 @@
 <?php
 if(isset($_GET['FilmID'])){
-    $filmid = $_GET['FilmID'];
+    $filmid = trim($_GET['FilmID'], " '");
     require_once 'vendor/autoload.php';
     $loader = new \Twig\Loader\FilesystemLoader('pages');
     $twig = new \Twig\Environment($loader);

@@ -11,8 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = trim($_POST['email']);
-    $password = trim($_POST['pass']);
+    $email = trim($_POST['email'], " '");
+    $password = trim($_POST['pass'], " '");
 
     include('ConnectDB.php');
     $user = $SQLCONN->query("select * from users where email = '$email' limit 1")->fetch_assoc();

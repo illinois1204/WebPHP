@@ -14,7 +14,10 @@ $(document).ready(() => {
                             <a style="font-size: 28px;" href='/player.php?FilmID=${item.id}'>${item.name}</a>
                             <div class="row">
                                     <div class="col-md-4">
-                                            <img style="object-fit: cover" width="100%" src=${item.poster ?? "static/images/noposter.jpg"} alt="Poster" />
+                                        ${item.poster == '' 
+                                            ? `<img style="object-fit: cover" width="100%" src="static/images/noposter.jpg" alt="Poster" />`
+                                            : `<img style="object-fit: cover" width="100%" src=${item.poster} alt="Poster" />`
+                                        }
                                     </div>
                                     <div class="col-md-8">
                                             <p>Год: ${item.year}</p>
